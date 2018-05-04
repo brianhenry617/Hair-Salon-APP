@@ -6,37 +6,37 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HairSalon
 {
-    public class Startup
+  public class Startup
+  {
+    public Startup(IHostingEnvironment env)
     {
-        public Startup(IHostingEnvironment env)
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
-
-        public IConfigurationRoot Configuration { get; }
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-        }
-
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseDeveloperExceptionPage();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Our Salon APP!");
-            });
-        }
+      var builder = new ConfigurationBuilder()
+      .SetBasePath(env.ContentRootPath)
+      .AddEnvironmentVariables();
+      Configuration = builder.Build();
     }
-}
+
+    public IConfigurationRoot Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+      services.AddMvc();
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+      app.UseDeveloperExceptionPage();
+
+      app.UseMvc(routes =>
+      {
+        routes.MapRoute(
+        name: "default",
+        template: "{controller=Home}/{action=Index}/{id?}");
+        });
+        app.Run(async (context) =>
+        {
+          await context.Response.WriteAsync("Our Salon APP!");
+          });
+        }
+      }
+    }
