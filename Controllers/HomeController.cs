@@ -8,14 +8,14 @@ namespace HairSalon
   public class HomeController : Controller
   {
     [HttpGet("/")]
-    public ActionResult Index()
+    public ActionResult Index();
     {
       List <Client> all Clients = Clients.GetAll();
       return View(allClients);
     }
 
     [HttpGet("/Client/new")]
-    public ActionResult CreateForm()
+    public ActionResult CreateForm();
     {
       return View();
     }
