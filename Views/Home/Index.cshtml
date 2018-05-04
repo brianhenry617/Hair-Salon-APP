@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Hair Salon APPlication</title>
+</head>
+<body>
+  <h1>Client List</h1>
+  <ul>
+    @foreach(var Contact in Model)
+    {
+      <li>@Client.GetName()</li>
+      <li>@Client.GetEmail()</li>
+      <li>@Client.GetPhoneNumber()</li>
+      <li>@Client.GetPrefferedStylist()</li>
 
-  </body>
+    }
+  </ul>
+  <p><a href="/Home/new">Add another client</a></p>
+  <form action="/Home/delete" method="post">
+    <button type="submit" name="button">Clear All Clients</button>
+  </form>
+
+  <h1>Stylist List</h1>
+  <ul>
+    @foreach(var Contact in Model)
+    {
+      <li>@Stylist.GetName()</li>
+      <li>@Stylist.GetEmail()</li>
+      <li>@Stylist.GetPhoneNumber()</li>
+      <li>@Stylist.GetWorkSchedule()</li>
+
+    }
+  </ul>
+  <p><a href="/Home/new">Add another Stylist</a></p>
+  <form action="/Home/delete" method="post">
+    <button type="submit" name="button">Clear All Stylist</button>
+  </form>
+
+
+</body>
 </html>
